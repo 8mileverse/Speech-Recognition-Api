@@ -1,7 +1,8 @@
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
 const rec = new SpeechRecognition();
 rec.lang = "en-US";
-rec.continuous = true; // Set to true for continuous listening
+rec.continuous = true; // Allow continuous speech recognition
 
 const acceptedColors = [
   "red", "green", "blue", "yellow", "orange", "purple", 
@@ -32,11 +33,14 @@ rec.onresult = function (e) {
 // Restart recognition when it ends
 rec.onend = function () {
   setTimeout(() => {
-    rec.start();
-  }, 500); // Optional delay to avoid rapid restarts
+    rec.start(); // Restart recognition after a short delay
+  }, 500); // 500 ms delay to avoid rapid restarts
 };
 
-// Add button interaction for mobile devices
-document.getElementById('startRecognition').addEventListener('click', function() {
-  rec.start(); // Start speech recognition after user interaction
-});
+// Function to start speech recognition
+function startRecognition() {
+  rec.start(); // Start speech recognition
+}
+
+// Call this function to begin recognition
+startRecognition();
