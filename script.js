@@ -51,7 +51,7 @@ function displayMessage(message) {
 rec.onend = function () {
   setTimeout(() => {
     rec.start(); // Restart recognition after a short delay
-  }, 500); // 500 ms delay to avoid rapid restarts
+  }, 3000); // 500 ms delay to avoid rapid restarts
 };
 
 // Function to start speech recognition
